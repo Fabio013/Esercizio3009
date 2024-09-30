@@ -19,9 +19,11 @@ public class AuthorService {
     AuthorRepository authorRepository;
     @Autowired
     AuthorMapper authorMapper;
+
     public List<AuthorDTO> getAllAuthors(){
         return authorMapper.fromAuthorListToDTOList(authorRepository.findAll());
     }
+
     public AuthorDTO getAuthorById(Long id)throws Exception{
         Author author = authorRepository.findById(id).orElseThrow(() -> new Exception("Ciaoo"));
         return authorMapper.fromAuthorToDTO(author);
